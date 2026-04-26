@@ -1,10 +1,11 @@
 import React from 'react'
-import HeroSection from '../HeroSection/HeroSection'
+import Sidebar from '../Sidebar/Sidebar.jsx'
+import { Outlet } from 'react-router-dom'
 
 export default function Home() {
   return (
     <>
-    <HeroSection/>
+   <Outlet/>
     </>
   )
 }

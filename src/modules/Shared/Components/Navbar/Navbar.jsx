@@ -1,60 +1,57 @@
 import React from "react";
-import logo from "../../../../assets/images/Logo/Button container.png";
-import styles from "./NavbarStyles";
+import Logo from "../../../../assets/images/Logo/axis logo.svg";
+import style from "./Navbar.module.css";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <div className="container-fluid">
-      <nav className="navbar navbar-expand-lg">
-        <div className="container">
+    <nav className="navbar navbar-light">
+      <div className="container-fluid d-flex justify-content-between align-items-center">
+        {/* Logo */}
+        <div className={style.image}>
+          <Link className="navbar-brand" to="/">
+            <img src={Logo} className={style.logo} alt="logo" />
+          </Link>
+        </div>
 
-          <a className="navbar-brand" href="#">
-            <img src={logo} alt="logo" />
-          </a>
-
+        {/* User Dropdown */}
+        <div className="dropdown">
           <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
+            className="btn btn-light dropdown-toggle d-flex align-items-center gap-2"
+            data-bs-toggle="dropdown"
           >
-            <span className="navbar-toggler-icon"></span>
+            <img
+              src="https://github.com/mdo.png"
+              alt="user"
+              width="32"
+              height="32"
+              className="rounded-circle"
+            />
+            <span>Admin</span>
           </button>
 
-          <div
-            className="collapse navbar-collapse justify-content-center"
-            id="navbarNav"
-          >
-            <ul className="navbar-nav" style={styles.links}>
-              
-              <li className="nav-item">
-                <a className="nav-link active" href="#">Home</a>
-              </li>
-
-              <li className="nav-item">
-                <a className="nav-link" href="#">Find jobs</a>
-              </li>
-
-              <li className="nav-item">
-                <a className="nav-link" href="#">About Us</a>
-              </li>
-
-              <li className="nav-item">
-                <a className="nav-link" href="#" tabIndex={-1}>
-                  Contact
-                </a>
-              </li>
-
-            </ul>
-          </div>
-
-          <div style={styles.nav_button}>
-            <button className="btn text-success">Register</button>
-            <button className="btn btn-success">Sign Up</button>
-          </div>
-
+          <ul className="dropdown-menu dropdown-menu-end shadow">
+            <li>
+              <Link className="dropdown-item" to="/profile">
+                Profile
+              </Link>
+            </li>
+            <li>
+              <Link className="dropdown-item" to="/settings">
+                Settings
+              </Link>
+            </li>
+            <li>
+              <hr className="dropdown-divider" />
+            </li>
+            <li>
+              <Link className="dropdown-item text-danger" to="/logout">
+                Logout
+              </Link>
+            </li>
+          </ul>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 }
